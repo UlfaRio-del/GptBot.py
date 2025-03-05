@@ -3,7 +3,7 @@ import telebot
 
 g4f.debug.logging = True
 
-token = '8156002286:AAGWx4noaStyLxXgptUJrKHD0Iwqs4nMxY8'
+token = 'BOT_TOKEN'
 bot = telebot.TeleBot(token)
 
 @bot.message_handler(commands=['start'])
@@ -13,8 +13,8 @@ def send_welcome(message):
 @bot.message_handler(content_types=['text'])
 def message_handler(message):
     response = g4f.ChatCompletion.create(
-        model="deepseek-chat",
-        provider=g4f.Provider.Blackbox,
+        model="deepseek-v3",
+        provider=g4f.Provider.PollinationsAI,
         messages=[{"role": "user", "content": message.text}],
     )
     bot.reply_to(message, response, parse_mode='MARKDOWN')
